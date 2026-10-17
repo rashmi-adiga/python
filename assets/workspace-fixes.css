@@ -1,0 +1,84 @@
+/* Keep the lesson rail separate from independently scrolling content. */
+.code-editor .cm-gutters,
+.code-editor .cm-gutterElement {
+  color: #c5cedb !important;
+}
+.lesson-rail > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.lesson-rail small {
+  color: #425f50;
+  font-weight: 700;
+  padding: 4px 8px;
+}
+.lesson-step span {
+  width: 21px;
+  height: 21px;
+  display: grid;
+  place-items: center;
+  color: white;
+  font-size: 0.67rem;
+}
+.lesson-step.locked-step {
+  opacity: 1;
+  color: #52665c;
+}
+.lesson-step.locked-step span {
+  background: #617568;
+  border-color: #617568;
+}
+.ide-stack:has(.editor-panel.subpane-collapsed) {
+  grid-template-rows: 38px 0 minmax(0, 1fr);
+}
+.ide-stack:has(.output-panel.subpane-collapsed) {
+  grid-template-rows: minmax(0, 1fr) 0 38px;
+}
+.ide-stack:has(.subpane-collapsed) .output-resizer {
+  display: none;
+}
+.workspace-footer .locked::after {
+  content: none;
+}
+@media (max-width: 700px) {
+  .lesson-layout {
+    grid-template-rows: 84px minmax(0, 1fr);
+  }
+  .lesson-rail {
+    position: relative;
+    z-index: 2;
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-height: 84px;
+  }
+  .lesson-rail > div {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(70px, 1fr));
+    flex: 1 0 235px;
+    gap: 0 4px;
+  }
+  .lesson-rail small {
+    grid-column: 1 / -1;
+    font-size: 0.65rem;
+    padding: 0 4px;
+  }
+  .lesson-step {
+    padding: 5px 3px;
+    gap: 4px;
+  }
+  .lesson-step b {
+    font-size: 0.67rem;
+  }
+  .lesson-step span {
+    width: 16px;
+    height: 16px;
+    font-size: 0.6rem;
+  }
+  .chapter-meta {
+    display: none;
+  }
+  .concept-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

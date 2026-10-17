@@ -1,0 +1,80 @@
+[
+  {
+    "id": "welcome",
+    "title": "Make the computer talk",
+    "stage": "Stage 1 - First contact",
+    "number": 1
+  },
+  {
+    "id": "variables",
+    "title": "Variables are labeled boxes",
+    "stage": "Stage 1 - First contact",
+    "number": 2
+  },
+  {
+    "id": "types",
+    "title": "Types, conversion, and user input",
+    "stage": "Stage 1 - First contact",
+    "number": 3
+  },
+  {
+    "id": "decisions",
+    "title": "Decisions with Boolean logic",
+    "stage": "Stage 1 - First contact",
+    "number": 4
+  },
+  {
+    "id": "loops",
+    "title": "Repetition with for and while loops",
+    "stage": "Stage 1 - First contact",
+    "number": 5
+  },
+  {
+    "id": "functions",
+    "title": "Functions and decomposition",
+    "stage": "Stage 1 - First contact",
+    "number": 6
+  },
+  {
+    "id": "first-project",
+    "title": "Project: text adventure",
+    "stage": "Stage 1 - First contact",
+    "number": 7
+  },
+  {
+    "id": "strings",
+    "title": "Strings and text processing",
+    "stage": "Stage 2 - Working with data",
+    "number": 8
+  },
+  {
+    "id": "collections",
+    "title": "Lists, tuples, sets, and dictionaries",
+    "stage": "Stage 2 - Working with data",
+    "number": 9
+  },
+  {
+    "id": "comprehensions",
+    "title": "Comprehensions and generators",
+    "stage": "Stage 2 - Working with data",
+    "number": 10
+  },
+  {
+    "id": "files",
+    "title": "Files, paths, JSON, and CSV",
+    "stage": "Stage 2 - Working with data",
+    "number": 11
+  },
+  {
+    "id": "errors",
+    "title": "Exceptions and defensive programming",
+    "stage": "Stage 2 - Working with data",
+    "number": 12
+  },
+  {
+    "id": "data-project",
+    "title": "Project: personal expense analyzer",
+    "stage": "Stage 2 - Working with data",
+    "number": 13
+  }
+]
