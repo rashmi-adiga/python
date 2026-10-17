@@ -14,11 +14,32 @@
     throw new Error(result.error || 'Something went wrong. Please try again.');
   return result;
 }
+const demoPages =
+  location.hostname === 'rashmi-adiga.github.io' &&
+  location.pathname.startsWith('/python/');
+const demoAccount = { username: 'rashmi', password: 'demo' };
+function demoLogin(data) {
+  if (
+    data.username.trim().toLowerCase() !== demoAccount.username ||
+    data.password !== demoAccount.password
+  )
+    throw new Error('The username or password is incorrect. Please try again.');
+  sessionStorage.setItem('pathfinder_demo_user', demoAccount.username);
+  return { role: 'student' };
+}
 const login = document.querySelector('#login-form');
 const reset = document.querySelector('#reset-form');
 const result = document.querySelector('.password-result');
 const generated = document.querySelector('#new-password');
 const recovery = document.querySelector('#recovery');
+if (demoPages && login) {
+  const notice = document.createElement('p');
+  notice.className = 'form-status';
+  notice.setAttribute('role', 'status');
+  notice.textContent =
+    'Demo access only. This browser-side sign-in does not protect the public course.';
+  login.before(notice);
+}
 function revealRecovery() {
   if (recovery && location.hash === '#recovery') recovery.open = true;
 }
@@ -40,7 +61,8 @@ login?.addEventListener('submit', async (event) => {
   button.disabled = true;
   status.textContent = 'Signing you in…';
   try {
-    const user = await api('login', Object.fromEntries(new FormData(login)));
+    const data = Object.fromEntries(new FormData(login));
+    const user = demoPages ? demoLogin(data) : await api('login', data);
     location.assign(
       user.role === 'coordinator' ? 'coordinator.html' : 'course.html',
     );
@@ -124,7 +146,8 @@ document
   ?.addEventListener('click', async (event) => {
     event.currentTarget.disabled = true;
     try {
-      await api('logout', {});
+      if (demoPages) sessionStorage.removeItem('pathfinder_demo_user');
+      else await api('logout', {});
       location.assign('login.html');
     } catch (error) {
       let status = document.querySelector('[data-account-status]');
